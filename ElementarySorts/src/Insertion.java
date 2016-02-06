@@ -1,7 +1,10 @@
 /**
- * Insertion sort algorithm, scans from left to right
+ * Insertion sort algorithm
  * 
- * @author ets
+ * @author Eric Schraeder Feb 2016
+ * 
+ * Analysis of Insertion sort
+ *  ~ 1/4 N^2 compares and ~ 1/4 N^2 exchanges on avg
  *
  */
 public class Insertion {
@@ -9,6 +12,7 @@ public class Insertion {
 	public static void sort(Comparable [] a) {
 		int N = a.length;
 		/**
+		 * Scans left to right
 		 * Invariants : entries to left of i inclusive are in ascending order
 		 * 				entries to right of i have not yet been sorted
 		 */
@@ -22,7 +26,7 @@ public class Insertion {
 			}
 		}
 		
-		pprint(a, N);
+		//pprint(a, N);
 	}
 	
 	private static void pprint(Comparable [] p, int N) {
