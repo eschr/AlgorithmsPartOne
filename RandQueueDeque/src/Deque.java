@@ -1,3 +1,15 @@
+/**
+ * Algorithms I, Princeton University via coursera.org
+ * Programming assignment II - Randomized Queues and Deques
+ * 
+ * Author : Eric Schraeder 
+ * 			2/2016
+ * 
+ * Deque.java implements a double ended queue, supports adding and removing items from either 
+ * 			  the front or the back of the data structure.
+ */
+
+
 import java.util.Iterator;
 
 public class Deque<Item> implements Iterable<Item> {
@@ -66,6 +78,7 @@ public class Deque<Item> implements Iterable<Item> {
 			   newItem = new Node<Item>( item, oldHead, null );
 			   oldHead.setPrevious(newItem);
 			   head = newItem;
+			   oldHead = null;
 			   itemCount++;
 			   return;
 		   }  
@@ -97,6 +110,7 @@ public class Deque<Item> implements Iterable<Item> {
 			   newItem = new Node<Item>(item, null, oldLast);
 			   oldLast.setNext(newItem);
 			   tail = newItem;
+			   oldLast = null;
 			   itemCount++;
 			   return;
 		   }
@@ -115,7 +129,9 @@ public class Deque<Item> implements Iterable<Item> {
 			   return item;
 		   }
 		   else {
+			   Node oldHead = head;
 			   head = head.next;
+			   oldHead = null;
 			   return item;
 		   }   
 	   }
@@ -132,7 +148,9 @@ public class Deque<Item> implements Iterable<Item> {
 			   return item;
 		   }
 		   else {
+			   Node oldTail = tail;
 			   tail = tail.previous;
+			   oldTail = null;
 			   return item;
 		   }
 	   }
@@ -150,6 +168,7 @@ public class Deque<Item> implements Iterable<Item> {
 			   throw new java.lang.UnsupportedOperationException();
 		   }
 		   public Item next() {
+			   if (! hasNext() ) throw new java.util.NoSuchElementException();
 			   Item item = current.item;
 			   current = current.next;
 			   return item;
@@ -159,16 +178,10 @@ public class Deque<Item> implements Iterable<Item> {
 	   
 	   public static void main( String[] args ) {  // unit testing
 		   Deque dq = new Deque();
-		   dq.addLast("dog");
-		   dq.addLast("cat");
-		   dq.addLast("sex");
-		   dq.removeFirst();
-		   dq.removeLast();
-		   dq.addLast("monkey");
-		 
-		   dq.addFirst("Heather");
-		   dq.addFirst("Eric");
-		   dq.removeFirst();
+		   
+		   for (int i = 0; i < 25; i++) {
+			   dq.addLast(i);
+		   }
 		  
 		   Iterator iter = dq.iterator();
 		   while (iter.hasNext()) {
