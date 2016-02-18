@@ -5,6 +5,8 @@
  */
 public class Merge {
 	
+	private static int mergeCall = 0;
+	
 	private Merge() { }
 	
 	private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi, String s) 
@@ -33,6 +35,7 @@ public class Merge {
 
 	private static void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int hi) 
 	{
+		mergeCall++;
 		System.out.println("merge: " + lo +  " : " + mid + " : " + hi );
 		assert isSorted(a, lo, mid);
 		assert isSorted(a, mid+1, hi);
@@ -40,8 +43,8 @@ public class Merge {
 		for (int k = lo; k <= hi; k++ )
 		{
 			aux[k] = a[k];
-			System.out.printf("%.2f",a[k]);
-			System.out.print(" ");
+			//System.out.printf("%.2f",a[k]);
+			//System.out.print(" ");
 		}
 		System.out.println();
 		
@@ -65,6 +68,10 @@ public class Merge {
 		
 		assert isSorted(a, lo, hi);
 		
+		if (mergeCall == 7) {
+			for (int b = 0; b < a.length; b++) System.out.print(a[b] + " - ");
+		}
+		
 	}
 	
 	private static boolean isSorted(Comparable[] a, int begin, int end)
@@ -86,11 +93,12 @@ public class Merge {
 	public static void main(String[] args) {
 		System.out.println("hi");
 		Double[] a = new Double[8];
+		Integer[] b = {55, 48, 44, 42, 24, 67, 41, 29, 99, 98, 84, 52};
 		for (int i = 0; i < 8; i++) {
 			a[i] = StdRandom.uniform();
 		}
-		Merge.sort(a);
-		assert isSorted(a, 0, a.length);
+		Merge.sort(b);
+		assert isSorted(b, 0, b.length);
 	}
 
 }
