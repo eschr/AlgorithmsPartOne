@@ -3,21 +3,26 @@ public class Merge {
 	
 	private Merge() { }
 	
-	private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi) 
+	private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi, String s) 
 	{
-		System.out.println("Sort: " + lo + " - " + hi);
-		if (lo >= hi) return;
+		
+		if (lo >= hi) {
+			System.out.println(s + "  Sort RETURN " + lo + " - " + hi);
+			
+			return;
+		}
 		int mid = lo + (hi - lo) / 2;
 		System.out.println("Sort: " + lo + " - " + mid + " - " + hi);
-		sort(a, aux, lo, mid);
-		sort(a, aux, mid+1, hi);
+		sort(a, aux, lo, mid, "L");
+		sort(a, aux, mid+1, hi, "R");
+		System.out.print("STATE before merge : ");
 		merge(a, aux, lo, mid, hi);
 	}
 	
 	public static void sort(Comparable[] a) 
 	{
 		Comparable[] aux = new Comparable[a.length];
-		sort(a, aux, 0, a.length - 1);
+		sort(a, aux, 0, a.length - 1, "start");
 		assert isSorted(a, 0, a.length - 1);
 	}
 	
@@ -31,7 +36,8 @@ public class Merge {
 		for (int k = lo; k <= hi; k++ )
 		{
 			aux[k] = a[k];
-			System.out.print(a[k] + " ");
+			System.out.printf("%.2f",a[k]);
+			System.out.print(" ");
 		}
 		System.out.println();
 		
@@ -75,8 +81,8 @@ public class Merge {
 	//test client
 	public static void main(String[] args) {
 		System.out.println("hi");
-		Double[] a = new Double[10];
-		for (int i = 0; i < 10; i++) {
+		Double[] a = new Double[8];
+		for (int i = 0; i < 8; i++) {
 			a[i] = StdRandom.uniform();
 		}
 		Merge.sort(a);
