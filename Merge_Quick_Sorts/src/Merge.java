@@ -1,4 +1,8 @@
-
+/*
+ * Author: Eric Schraeder
+ * Merge sort implementation based on Algorithms I Princeton University via coursera.og
+ * 2/18/16
+ */
 public class Merge {
 	
 	private Merge() { }
