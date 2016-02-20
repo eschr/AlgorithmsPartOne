@@ -37,8 +37,6 @@ public class BruteCollinearPoints {
 							if (order == -3) {
 								LineSegment ls = new LineSegment(points[p], points[s]);
 								lineSeg.add(ls);
-								/*System.out.println("p: " + points[p].toString() + " q: " + points[q].toString() + " r: " + points[r].toString()
-										+ " s: " + points[s].toString());*/
 								segmentCount++;
 								break;
 							}
@@ -61,7 +59,7 @@ public class BruteCollinearPoints {
 
     //client to parse input txt file and create StdDraw output
     
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 
 		// read the N points from a file
 		In in = new In(args[0]);
@@ -91,6 +89,6 @@ public class BruteCollinearPoints {
 			StdOut.println(segment);
 			segment.draw();
 		}
-	}
+	}*/
 }
 

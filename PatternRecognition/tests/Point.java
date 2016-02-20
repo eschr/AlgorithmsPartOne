@@ -1,12 +1,10 @@
 /******************************************************************************
- *  Author: Eric Schraeder
- *  
  *  Compilation:  javac Point.java
  *  Execution:    java Point
  *  Dependencies: none
  *  
  *  An immutable data type for points in the plane.
- *  Coursera, Algorithms Part I programming assignment 3
+ *  For use on Coursera, Algorithms Part I programming assignment.
  *
  ******************************************************************************/
 
@@ -61,15 +59,7 @@ public class Point implements Comparable<Point> {
      * @return the slope between this point and the specified point
      */
     public double slopeTo(Point that) {
-    	if (this.y == that.y) {
-    		if (this.x == that.x) return Double.NEGATIVE_INFINITY;
-    		else return +0.0;
-    	}
-    	else if (this.x == that.x) return Double.POSITIVE_INFINITY;
-    	else {
-    		return (double) (that.y - this.y) / (that.x - this.x);
-    	}
-    	
+        /* YOUR CODE HERE */
     }
 
     /**
@@ -85,11 +75,7 @@ public class Point implements Comparable<Point> {
      *         argument point
      */
     public int compareTo(Point that) {
-    	if (this.y > that.y) return 1;
-    	else if (this.y < that.y) return -1;
-    	else if (this.x < that.x) return -1;
-    	else if (this.x > that.x) return 1;
-    	else return 0;
+        /* YOUR CODE HERE */
     }
 
     /**
@@ -100,15 +86,6 @@ public class Point implements Comparable<Point> {
      */
     public Comparator<Point> slopeOrder() {
         /* YOUR CODE HERE */
-    	return new PointComparator();
-    }
-    
-    private class PointComparator implements Comparator<Point> {
-    	public int compare(Point one, Point two) {
-    		double slopeToPointOne = Point.this.slopeTo(one);
-    		double slopeToPointTwo = Point.this.slopeTo(two);
-    		return Double.compare(slopeToPointOne, slopeToPointTwo);	
-    	}
     }
 
 
@@ -124,4 +101,10 @@ public class Point implements Comparable<Point> {
         return "(" + x + ", " + y + ")";
     }
 
+    /**
+     * Unit tests the Point data type.
+     */
+    public static void main(String[] args) {
+        /* YOUR CODE HERE */
+    }
 }
