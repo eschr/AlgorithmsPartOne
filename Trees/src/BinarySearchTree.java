@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 
 public class BinarySearchTree<Key extends Comparable<Key>, Val> {
 	
@@ -49,8 +49,20 @@ public class BinarySearchTree<Key extends Comparable<Key>, Val> {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		BinarySearchTree<Integer, String> bst = new BinarySearchTree<>();
+		Scanner scan = new Scanner(System.in);
+		String response = "";
+		do {
+			System.out.println("enter a key: ");
+			Integer key = scan.nextInt();
+			System.out.println("enter a val: ");
+			String val = scan.next();
+			bst.put(key, val);
+			System.out.println("continue? Y or N");
+			response = scan.next();
 		
-
+		} while ( response.equals("y"));
+		
+		System.out.println(bst.get(1));
 	}
 
 }
